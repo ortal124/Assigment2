@@ -4,10 +4,15 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import postRoutes from './routes/postRouter';
 import commentRoutes from './routes/commentRouter';
+import userRoutes from './routes/userRouter';
+import authRoutes from './routes/authRouter';
+import * as dotenv from 'dotenv';
+
 
 const app = express();
 const PORT = 3000;
 
+dotenv.config();
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -28,6 +33,8 @@ mongoose.connect(MONGO_URI, { dbName: 'assignment2'})
 
 app.use('/post', postRoutes);
 app.use('/comment', commentRoutes);
+app.use('/users', userRoutes);
+app.use('/users', authRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
