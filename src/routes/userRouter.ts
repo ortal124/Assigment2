@@ -1,6 +1,7 @@
 // filepath: /c:/Users/marle/Desktop/ortal/Assigment2/src/routes/userRoutes.ts
 import { Router } from 'express';
 import userController from '../controller/userConroller';
+import { authMiddleware } from '../controller/authController';
 
 const router = Router();
 
@@ -50,7 +51,7 @@ router.post('/register', userController.register);
  *       404:
  *         description: User not found
  */
-router.get('/:id', userController.getUser);
+router.get('/:id',authMiddleware, userController.getUser);
 
 /**
  * @swagger
@@ -84,7 +85,7 @@ router.get('/:id', userController.getUser);
  *       404:
  *         description: User not found
  */
-router.put('/:id', userController.updateUser);
+router.put('/:id',authMiddleware ,userController.updateUser);
 
 /**
  * @swagger
@@ -105,6 +106,6 @@ router.put('/:id', userController.updateUser);
  *       404:
  *         description: User not found
  */
-router.delete('/:id', userController.deleteUser);
+router.delete('/:id', authMiddleware, userController.deleteUser);
 
 export default router;

@@ -1,6 +1,7 @@
 // filepath: /c:/Users/marle/Desktop/ortal/Assigment2/src/routes/postRoutes.ts
 import { Router } from 'express';
 import {createPost, getPostById, getPosts, updatePost} from '../controller/postController';
+import { authMiddleware } from '../controller/authController';
 
 const router = Router();
 
@@ -41,7 +42,7 @@ router.post('/', createPost);
  *       400:
  *         description: Bad request
  */
-router.get('/', getPosts);
+router.get('/',authMiddleware, getPosts);
 
 /**
  * @swagger
@@ -62,7 +63,7 @@ router.get('/', getPosts);
  *       404:
  *         description: Post not found
  */
-router.get('/:id', getPostById);
+router.get('/:id',authMiddleware, getPostById);
 
 /**
  * @swagger
@@ -94,6 +95,6 @@ router.get('/:id', getPostById);
  *       404:
  *         description: Post not found
  */
-router.put('/:id', updatePost);
+router.put('/:id',authMiddleware ,updatePost);
 
 export default router;

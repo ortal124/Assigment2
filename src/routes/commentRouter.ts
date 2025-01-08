@@ -1,6 +1,7 @@
 // filepath: /c:/Users/marle/Desktop/ortal/Assigment2/src/routes/commentRoutes.ts
 import { Router } from 'express';
 import {createComment, deleteComment, getAllComments, getCommentsByPostId, updateComment} from '../controller/commentController';
+import { authMiddleware } from '../controller/authController';
 
 const router = Router();
 
@@ -29,7 +30,7 @@ const router = Router();
  *       400:
  *         description: Bad request
  */
-router.post('/', createComment);
+router.post('/', authMiddleware, createComment);
 
 /**
  * @swagger
@@ -43,7 +44,7 @@ router.post('/', createComment);
  *       400:
  *         description: Bad request
  */
-router.get('/', getAllComments);
+router.get('/', authMiddleware, getAllComments);
 
 /**
  * @swagger
@@ -64,7 +65,7 @@ router.get('/', getAllComments);
  *       404:
  *         description: post not found
  */
-router.get('/:post', getCommentsByPostId);
+router.get('/:post',authMiddleware ,getCommentsByPostId);
 
 /**
  * @swagger
@@ -96,7 +97,7 @@ router.get('/:post', getCommentsByPostId);
  *       404:
  *         description: Comment not found
  */
-router.put('/:commentId', updateComment);
+router.put('/:commentId',authMiddleware ,updateComment);
 
 /**
  * @swagger
@@ -117,6 +118,6 @@ router.put('/:commentId', updateComment);
  *       404:
  *         description: Comment not found
  */
-router.delete('/:commentId', deleteComment);
+router.delete('/:commentId', authMiddleware, deleteComment);
 
 export default router;
