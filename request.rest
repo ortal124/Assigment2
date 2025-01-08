@@ -14,7 +14,6 @@ GET http://localhost:3000/post/
 
 ###
 
-
 # Get a post by ID
 GET http://localhost:3000/post/677ebd7513b7eb6e9a076ebc
 
@@ -71,3 +70,66 @@ GET http://localhost:3000/comment/post?postId=677ebd7513b7eb6e9a076ebc
 
 # Delete a comment by ID
 DELETE http://localhost:3000/comment/677ebdb813b7eb6e9a076ec3
+
+###
+
+# Register a new user
+POST http://localhost:3000/users/register
+Content-Type: application/json
+
+{
+  "username": "newuser",
+  "email": "newuser@example.com",
+  "password": "password123"
+}
+
+###
+
+# Get a user by ID
+GET http://localhost:3000/users/USER_ID_HERE
+
+###
+
+# Update a user by ID
+PUT http://localhost:3000/users/USER_ID_HERE
+Content-Type: application/json
+
+{
+  "username": "updateduser",
+  "email": "updateduser@example.com",
+  "password": "newpassword123"
+}
+
+# Delete a user by ID
+DELETE http://localhost:3000/users/USER_ID_HERE
+
+###
+
+# Login a user
+POST http://localhost:3000/users/login
+Content-Type: application/json
+
+{
+  "email": "newuser@example.com",
+  "password": "password123"
+}
+
+###
+
+# Refresh token
+POST http://localhost:3000/users/refresh-token
+Content-Type: application/json
+
+{
+  "refreshToken": "your_refresh_token_here"
+}
+
+###
+
+# Logout a user
+POST http://localhost:3000/users/logout
+Content-Type: application/json
+
+{
+  "refreshToken": "your_refresh_token_here"
+}

@@ -1,11 +1,99 @@
-import express from 'express';
-import * as postController from '../controller/postController';
+// filepath: /c:/Users/marle/Desktop/ortal/Assigment2/src/routes/postRoutes.ts
+import { Router } from 'express';
+import {createPost, getPostById, getPosts, updatePost} from '../controller/postController';
 
-const router = express.Router();
+const router = Router();
 
-router.post('/', postController.createPost);
-router.get('/', postController.getPosts);
-router.get('/:postId', postController.getPostById);
-router.put('/:postId', postController.updatePost);
+/**
+ * @swagger
+ * /post:
+ *   post:
+ *     summary: Create a new post
+ *     tags: [Posts]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               content:
+ *                 type: string
+ *               senderId:
+ *                 type: string
+ *     responses:
+ *       201:
+ *         description: Post created successfully
+ *       400:
+ *         description: Bad request
+ */
+router.post('/', createPost);
+
+/**
+ * @swagger
+ * /post:
+ *   get:
+ *     summary: Get all posts
+ *     tags: [Posts]
+ *     responses:
+ *       200:
+ *         description: List of all posts
+ *       400:
+ *         description: Bad request
+ */
+router.get('/', getPosts);
+
+/**
+ * @swagger
+ * /post/{id}:
+ *   get:
+ *     summary: Get a post by ID
+ *     tags: [Posts]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The post ID
+ *     responses:
+ *       200:
+ *         description: Post details
+ *       404:
+ *         description: Post not found
+ */
+router.get('/:id', getPostById);
+
+/**
+ * @swagger
+ * /post/{id}:
+ *   put:
+ *     summary: Update a post by ID
+ *     tags: [Posts]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The post ID
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               content:
+ *                 type: string
+ *               senderId:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Post updated successfully
+ *       404:
+ *         description: Post not found
+ */
+router.put('/:id', updatePost);
 
 export default router;
