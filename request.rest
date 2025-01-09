@@ -86,12 +86,12 @@ Content-Type: application/json
 ###
 
 # Get a user by ID
-GET http://localhost:3000/users/677ed13ad83ccf04da4e2f41
+GET http://localhost:3000/users/USER_ID_HERE
 
 ###
 
 # Update a user by ID
-PUT http://localhost:3000/users/677ed13ad83ccf04da4e2f41
+PUT http://localhost:3000/users/USER_ID_HERE
 Content-Type: application/json
 
 {
@@ -100,15 +100,13 @@ Content-Type: application/json
   "password": "newpassword123"
 }
 
-###
-
 # Delete a user by ID
-DELETE http://localhost:3000/users/677ed3dbf584dc4b24d031bb
+DELETE http://localhost:3000/users/USER_ID_HERE
 
 ###
 
 # Login a user
-POST http://localhost:3000/users/login
+POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
@@ -119,19 +117,19 @@ Content-Type: application/json
 ###
 
 # Refresh token
-POST http://localhost:3000/users/refresh
+POST http://localhost:3000/auth/refresh-token
 Content-Type: application/json
 
 {
-  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzdlZDlkMTJiZDk0ZTFiY2E3YjVkODQiLCJyYW5kb20iOiIwLjE2Nzg2MzQ5NTA0MzExODE1IiwiaWF0IjoxNzM2MzY2NTUzLCJleHAiOjE3MzY5NzEzNTN9.B7aVDUVoz56P0FroICg6lusnG5YjlZtX3d99dNqTA5g"
+  "refreshToken": "your_refresh_token_here"
 }
 
 ###
 
 # Logout a user
-POST http://localhost:3000/users/logout
+POST http://localhost:3000/auth/logout
 Content-Type: application/json
 
 {
-  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzdlZDlkMTJiZDk0ZTFiY2E3YjVkODQiLCJyYW5kb20iOiIwLjM3MTY0OTg2ODA4OTIzMzMiLCJpYXQiOjE3MzYzNjY1NjYsImV4cCI6MTczNjk3MTM2Nn0.guByyqWz4nz-RakUOZB9amnv9Z5A3cgU1zQBl-mZUj0"
+  "refreshToken": "your_refresh_token_here"
 }

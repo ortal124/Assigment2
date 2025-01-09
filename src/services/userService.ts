@@ -15,8 +15,10 @@ class UserService {
     }
     return UserModel.findByIdAndUpdate(userId, updateData, { new: true });
   }
+
   async deleteUser(userId: string) {
     return UserModel.findByIdAndDelete(userId);
   }
 }
+
 export default new UserService();

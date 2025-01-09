@@ -30,7 +30,7 @@ export const getPosts = async (req: Request, res: Response) => {
 
 export const getPostById = async (req: Request, res: Response) => {
     try {
-        const postId = req.params.postId;
+        const postId = req.params.id;
         const post = await postService.getPostById(postId);
         if (!post) {
             res.status(404).json({ message: 'Post not found' });
@@ -45,7 +45,7 @@ export const getPostById = async (req: Request, res: Response) => {
 
 export const updatePost = async (req: Request, res: Response) => {
     try {
-        const postId = req.params.postId;
+        const postId = req.params.id;
         const { content, senderId } = req.body;
         if (!content || !senderId) {
             res.status(400).json({ message: 'Content and sender are required for update' });
