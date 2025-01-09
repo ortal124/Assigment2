@@ -11,6 +11,8 @@ const router = Router();
  *   post:
  *     summary: Create a new comment
  *     tags: [Comments]
+ *     security:
+ *       - bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -38,11 +40,13 @@ router.post('/', authMiddleware, createComment);
  *   get:
  *     summary: Get all comments
  *     tags: [Comments]
+ *     security:
+ *       - bearerAuth: []
  *     responses:
  *       200:
- *         description: List of all comments
- *       400:
- *         description: Bad request
+ *         description: Successful response
+ *       401:
+ *         description: Unauthorized
  */
 router.get('/', authMiddleware, getAllComments);
 
@@ -52,6 +56,8 @@ router.get('/', authMiddleware, getAllComments);
  *   get:
  *     summary: Get a comments by post ID
  *     tags: [Comments]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -73,6 +79,8 @@ router.get('/:post',authMiddleware ,getCommentsByPostId);
  *   put:
  *     summary: Update a comment by ID
  *     tags: [Comments]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -105,6 +113,8 @@ router.put('/:commentId',authMiddleware ,updateComment);
  *   delete:
  *     summary: Delete a comment by ID
  *     tags: [Comments]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id

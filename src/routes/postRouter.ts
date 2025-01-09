@@ -11,6 +11,8 @@ const router = Router();
  *   post:
  *     summary: Create a new post
  *     tags: [Posts]
+ *     security:
+ *       - bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -36,6 +38,8 @@ router.post('/', createPost);
  *   get:
  *     summary: Get all posts
  *     tags: [Posts]
+ *     security:
+ *       - bearerAuth: []
  *     responses:
  *       200:
  *         description: List of all posts
@@ -50,6 +54,8 @@ router.get('/',authMiddleware, getPosts);
  *   get:
  *     summary: Get a post by ID
  *     tags: [Posts]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -71,6 +77,8 @@ router.get('/:id',authMiddleware, getPostById);
  *   put:
  *     summary: Update a post by ID
  *     tags: [Posts]
+ *     security: 
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id

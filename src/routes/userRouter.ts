@@ -38,6 +38,8 @@ router.post('/register', userController.register);
  *   get:
  *     summary: Get a user by ID
  *     tags: [Users]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -59,6 +61,8 @@ router.get('/:id',authMiddleware, userController.getUser);
  *   put:
  *     summary: Update a user by ID
  *     tags: [Users]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -93,6 +97,8 @@ router.put('/:id',authMiddleware ,userController.updateUser);
  *   delete:
  *     summary: Delete a user by ID
  *     tags: [Users]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id

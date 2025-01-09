@@ -6,7 +6,7 @@ const router = Router();
 
 /**
  * @swagger
- * /users/login:
+ * /auth/login:
  *   post:
  *     summary: Login a user
  *     tags: [Auth]
@@ -31,7 +31,7 @@ router.post('/login', authController.login);
 
 /**
  * @swagger
- * /users/logout:
+ * /auth/logout:
  *   post:
  *     summary: Logout a user
  *     tags: [Auth]
@@ -54,7 +54,7 @@ router.post('/logout', authController.logout);
 
 /**
  * @swagger
- * /users/refresh:
+ * /auth/refresh:
  *   post:
  *     summary: Refresh JWT token
  *     tags: [Auth]

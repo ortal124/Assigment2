@@ -106,7 +106,7 @@ DELETE http://localhost:3000/users/USER_ID_HERE
 ###
 
 # Login a user
-POST http://localhost:3000/users/login
+POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
@@ -117,7 +117,7 @@ Content-Type: application/json
 ###
 
 # Refresh token
-POST http://localhost:3000/users/refresh-token
+POST http://localhost:3000/auth/refresh-token
 Content-Type: application/json
 
 {
@@ -127,7 +127,7 @@ Content-Type: application/json
 ###
 
 # Logout a user
-POST http://localhost:3000/users/logout
+POST http://localhost:3000/auth/logout
 Content-Type: application/json
 
 {
