@@ -107,7 +107,7 @@ const verifyRefreshToken = (refreshToken: string | undefined) => {
                     return;
                 }
 
-                return user;
+                resolve(user);
             } catch (err) {
                 reject("fail");
                 return;

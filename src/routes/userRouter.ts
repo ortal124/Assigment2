@@ -1,4 +1,3 @@
-// filepath: /c:/Users/marle/Desktop/ortal/Assigment2/src/routes/userRoutes.ts
 import { Router } from 'express';
 import userController from '../controller/userConroller';
 import { authMiddleware } from '../controller/authController';

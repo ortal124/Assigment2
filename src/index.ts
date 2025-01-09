@@ -8,11 +8,13 @@ import userRoutes from './routes/userRouter';
 import authRoutes from './routes/authRouter';
 import swaggerUI from "swagger-ui-express";
 import swaggerJsDoc from "swagger-jsdoc";
+import * as dotenv from 'dotenv';
 
 
 const app = express();
 const PORT = 3000;
 
+dotenv.config();
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
