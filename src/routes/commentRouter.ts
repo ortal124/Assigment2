@@ -60,7 +60,7 @@ router.get('/', authMiddleware, getAllComments);
  *       - bearerAuth: []
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: post
  *         required: true
  *         schema:
  *           type: string
@@ -83,7 +83,7 @@ router.get('/:post',authMiddleware ,getCommentsByPostId);
  *       - bearerAuth: []
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: commentId
  *         required: true
  *         schema:
  *           type: string
@@ -117,7 +117,7 @@ router.put('/:commentId',authMiddleware ,updateComment);
  *       - bearerAuth: []
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: commentId
  *         required: true
  *         schema:
  *           type: string

@@ -37,7 +37,7 @@ export const getAllComments = async (req: Request, res: Response) => {
 
 export const getCommentsByPostId = async (req: Request, res: Response) => {
     try {
-        const postId = req.query.post as string;
+        const postId = req.params.post as string;
         const comments = await commentService.getCommentsByPostId(postId);
         res.json(comments);
     } catch (error) {
