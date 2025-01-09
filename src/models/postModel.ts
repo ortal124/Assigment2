@@ -2,7 +2,7 @@ import mongoose, { Document, Schema, ObjectId } from 'mongoose';
 
 interface IPost extends Document {
   content: string;
-  senderId: ObjectId;
+  senderId: string;
 }
 
 const postSchema: Schema = new Schema({

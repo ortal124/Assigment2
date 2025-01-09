@@ -2,8 +2,8 @@ import mongoose, { Document, Schema, ObjectId} from 'mongoose';
 
 interface IComment extends Document {
   content: string;
-  senderId: ObjectId;
-  postId: ObjectId;
+  senderId: string;
+  postId: string;
 }
 
 const commentSchema: Schema = new Schema({
