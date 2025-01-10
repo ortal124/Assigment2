@@ -3,10 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.ts",
-  "type": "module",
   "scripts": {
-    "start": "node dist/app.js",
-    "dev": "ts-node src/app.ts",
+    "start": "tsc && node ./dist/app.js",
     "test": "jest",
     "build": "tsc"
   },
