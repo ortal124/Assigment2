@@ -1,6 +1,6 @@
 import mongoose, { Document, Schema, ObjectId } from 'mongoose';
 
-interface IPost extends Document {
+export interface IPost {
   content: string;
   senderId: string;
 }

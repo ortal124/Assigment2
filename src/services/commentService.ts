@@ -7,7 +7,7 @@ export const createComment = async (content: string, senderId: string, postId: s
 
 export const updateComment = async (commentId: string, content: string, senderId: string) => {
     const comment = await Comment.findById(commentId);
-    if (!comment) throw new Error('Comment not found');
+    if (comment == null) throw new Error('Comment not found');
     comment.content = content;
     comment.senderId = senderId;
     return await comment.save();
