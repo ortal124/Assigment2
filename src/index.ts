@@ -1,4 +1,4 @@
-import express, { Request, Response } from 'express';
+import express, { Request, Response, Express } from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import cors from 'cors';
@@ -49,16 +49,29 @@ const options = {
     },
     apis: ["./src/routes/*.ts"],
   };
+
 const specs = swaggerJsDoc(options);
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
 
-mongoose.connect('mongodb://localhost:27017/assignment2')
-  .then(() => {
-    console.log('Connected to MongoDB locally');
-    app.listen(PORT, () => {
-      console.log(`Server is running on http://localhost:${PORT}`);
-    });
-  })
-  .catch((error) => {
-    console.error('Error connecting to MongoDB:', error.message);
+const db = mongoose.connection;
+db.on("error", (error) => console.error(error));
+db.once("open", () => console.log("Connected to database"));
+
+const initApp = () => {
+  return new Promise<Express>((resolve, reject) => {
+    if (!process.env.DB_CONNECT) {
+      reject("DB_CONNECT is not defined in .env file");
+    } else {
+      mongoose
+        .connect(process.env.DB_CONNECT)
+        .then(() => {
+          resolve(app);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    }
   });
+};
+
+export default initApp;  
