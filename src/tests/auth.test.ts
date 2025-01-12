@@ -13,7 +13,7 @@ type User = IUser & {
   };
   
 let testUser: User = {
-    email: "testUsers@user.com",
+    email: "testAuth@user.com",
     password: "testpassword",
   }
 
