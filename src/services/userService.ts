@@ -2,6 +2,10 @@ import UserModel, {IUser} from '../models/userModel';
 import bcrypt from 'bcrypt';
 class UserService {
   async createUser(userData: IUser) {
+    const password = userData.password;
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+    userData.password = hashedPassword;
     const user = new UserModel( userData );
     return user.save();
   }
